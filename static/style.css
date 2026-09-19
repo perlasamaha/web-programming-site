@@ -659,7 +659,7 @@ footer p:last-child { margin: 0; }
     transform: scaleY(0);
     animation: rail-fill linear both;
     animation-timeline: view();
-    animation-range: entry 0% exit 100%;
+    animation-range: entry 0% entry 100%;
   }
 
   @media (min-width: 40rem) { main ol::after { left: 5px; } }
@@ -691,34 +691,15 @@ footer p:last-child { margin: 0; }
     to   { opacity: 1;    transform: translateY(0); }
   }
 
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 2px;
-    z-index: 10;
-    background: linear-gradient(90deg, var(--accent), var(--wash-teal));
-    transform-origin: left center;
-    transform: scaleX(0);
-    animation: read-progress linear both;
-    animation-timeline: scroll(root block);
-  }
-
-  @keyframes read-progress {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   @supports (animation-timeline: view()) {
     main ol::after,
     main ol > li::before,
-    main ol > li > article,
-    body::before { animation: none; }
+    main ol > li > article { animation: none; }
     main ol::after { transform: scaleY(1); }
     main ol > li > article { opacity: 1; transform: none; }
-    body::before { display: none; }
   }
 }
 
