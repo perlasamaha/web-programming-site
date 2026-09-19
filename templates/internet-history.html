@@ -9,8 +9,12 @@
 {% block content %}
 
   <nav aria-label="On this page">
-      <a href="{{ url_for('home') }}">Potfolio</a>
-  </nav>
+    <ul>
+      <li><a href="{{ url_for('home') }}">Potfolio</a></li>
+      <li><a href="#introduction">Introduction</a></li>
+      <li><a href="#timeline">Milestone timeline</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
 
   <section id="introduction">
       <h2>Introduction</h2>
