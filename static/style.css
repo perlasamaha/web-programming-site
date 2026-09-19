@@ -725,22 +725,14 @@ footer p:last-child { margin: 0; }
 
 /* --------------------------------------------- timeline without scroll JS --
    Safari before 26 and older Chrome have no scroll-driven animations, so the
-   @supports block above never runs and the rail would sit flat and grey.
-   Here the same look is delivered statically: filled markers and a rail that
-   carries the accent, so the timeline reads as finished rather than broken. */
+   @supports block above never runs. The rail is left evenly grey rather than
+   hinting at a progress that never moves; the markers are filled instead, so
+   the timeline still reads as finished.                                    */
 
 @supports not (animation-timeline: view()) {
 
-  main ol::before {
-    background: linear-gradient(180deg,
-                var(--accent) 0%,
-                var(--accent-deep) 12%,
-                var(--rail-track) 45%,
-                var(--rail-track) 88%,
-                transparent 100%);
-    opacity: 0.9;
-  }
-
+  /* no fill to suggest, so the rail stays evenly grey; only the markers
+     carry the accent                                                      */
   main ol > li::before {
     background: var(--accent);
     border-color: var(--accent);
