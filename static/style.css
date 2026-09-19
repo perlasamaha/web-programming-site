@@ -1,0 +1,512 @@
+/* ==========================================================================
+   Web Programming Portfolio — Perla Samaha
+   Mid-dark slate ground, azure accent, warm-cool contrast.
+   Sans for reading, monospace for data. Interactive but restrained.
+   Vanilla CSS. Every page extending base.html inherits this automatically.
+   ========================================================================== */
+
+/* --------------------------------------------------------------- tokens -- */
+
+:root {
+
+  /* ground: mid-dark slate, not black — keeps text comfortable for long reads */
+  --bg:           #1e2a38;
+  --bg-deep:      #18222e;   /* behind the page, edges       */
+  --surface:      #253341;   /* panels, rows                 */
+  --surface-hi:   #2c3c4c;   /* hover state of a surface     */
+
+  --ink:          #f0f5fa;   /* headings                     */
+  --body:         #c2d0dd;   /* running text                 */
+  --muted:        #8ba0b4;   /* meta, captions               */
+
+  --rule:         #33475a;   /* hairlines                    */
+  --rule-strong:  #47607a;   /* rails, emphasis              */
+
+  --accent:       #58a8ff;   /* primary: links, markers      */
+  --accent-hi:    #8cc4ff;   /* hover                        */
+  --accent-deep:  #2f7fd6;   /* pressed, borders             */
+  --accent-wash:  rgba(88, 168, 255, 0.12);
+
+  --glow:         0 0 0 1px rgba(88, 168, 255, 0.35);
+  --lift:         0 6px 20px rgba(8, 14, 22, 0.35);
+
+  /* type */
+  --font-sans: "Inter", "Segoe UI", system-ui, -apple-system,
+               "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo,
+               Consolas, monospace;
+
+  --size-logo:    0.75rem;
+  --size-title:   clamp(1.75rem, 4vw, 2.5rem);
+  --size-lede:    1.0625rem;
+  --size-section: 1.25rem;
+  --size-entry:   1.0625rem;
+  --size-body:    1rem;
+  --size-small:   0.875rem;
+  --size-meta:    0.8125rem;
+
+  --leading-tight: 1.25;
+  --leading-body:  1.62;
+
+  /* spacing */
+  --s1: 0.25rem;
+  --s2: 0.5rem;
+  --s3: 0.875rem;
+  --s4: 1.25rem;
+  --s5: 1.75rem;
+  --s6: 2.5rem;
+  --s7: 4.5rem;
+
+  /* layout */
+  --measure: 80ch;
+  --rail:    14rem;
+  --gutter:  4.75rem;
+  --pad:     2.5rem;
+
+  /* radii */
+  --r-sm:   4px;
+  --r-md:   8px;
+  --r-lg:   12px;
+  --r-full: 999px;
+
+  /* motion */
+  --ease:  cubic-bezier(0.2, 0.7, 0.3, 1);
+  --fast:  140ms;
+  --slow:  220ms;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  background: var(--bg-deep);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ------------------------------------------------- page grid per base.html
+   body children: header, nav (absent on home), main, footer.               */
+
+body {
+  margin: 0;
+  padding: 0 var(--pad) var(--s7);
+  color: var(--body);
+  font-family: var(--font-sans);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+
+  /* a soft cool wash so the ground isn't a flat slab */
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(88, 168, 255, 0.10), transparent 60%),
+    radial-gradient(900px 480px at 100% 0%, rgba(96, 214, 199, 0.07), transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+@media (min-width: 60rem) {
+  body {
+    display: grid;
+    grid-template-columns: var(--rail) minmax(0, var(--measure));
+    column-gap: var(--gutter);
+    justify-content: center;
+  }
+  body > header,
+  body > footer { grid-column: 1 / -1; }
+  body > nav    { grid-column: 1; }
+  body > main   { grid-column: 2; }
+
+  body:not(:has(> nav)) { grid-template-columns: minmax(0, var(--measure)); }
+  body:not(:has(> nav)) > main { grid-column: 1; }
+}
+
+.container {
+  width: 100%;
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* --------------------------------------------------------------- header -- */
+
+body > header {
+  max-width: calc(var(--rail) + var(--gutter) + var(--measure));
+  margin: 0 auto;
+  padding: var(--s6) 0 var(--s5);
+}
+
+.logo {
+  display: inline-block;
+  margin-bottom: var(--s4);
+  padding: 0.3rem 0.65rem;
+  background: var(--accent-wash);
+  border: 1px solid var(--accent-deep);
+  border-radius: var(--r-sm);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--size-logo);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: background var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+
+.logo:hover { background: var(--accent); color: var(--bg-deep); }
+
+img.logo { padding: 0; background: none; border: 0; height: 2.25rem; width: auto; }
+
+header h1 {
+  max-width: 22ch;
+  margin: 0 0 var(--s3);
+  color: var(--ink);
+  font-size: var(--size-title);
+  font-weight: 650;
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+}
+
+header p {
+  max-width: 64ch;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--size-lede);
+}
+
+/* ------------------------------------------------------------------ nav -- */
+
+body > nav {
+  padding: var(--s4) 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+@media (min-width: 60rem) {
+  body > nav {
+    position: sticky;
+    top: var(--s5);
+    align-self: start;
+    padding-top: var(--s5);
+    border-top: 0;
+  }
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2) var(--s4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 60rem) {
+  nav ul { display: block; }
+  nav li { margin-bottom: var(--s1); }
+}
+
+nav a {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-left: 2px solid transparent;
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  color: var(--muted);
+  font-size: var(--size-small);
+  text-decoration: none;
+  transition: color var(--fast) var(--ease),
+              background var(--fast) var(--ease),
+              border-color var(--fast) var(--ease);
+}
+
+nav a:hover {
+  color: var(--accent-hi);
+  background: var(--accent-wash);
+  border-left-color: var(--accent);
+}
+
+/* ------------------------------------------------------ sections + type -- */
+
+body > main { padding-top: var(--s5); }
+
+section { margin: 0 0 var(--s6); }
+section:last-child { margin-bottom: 0; }
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+  margin: 0 0 var(--s4);
+  color: var(--ink);
+  font-size: var(--size-section);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+/* a rule that grows out of the heading rather than boxing it in */
+h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--rule-strong), transparent);
+}
+
+h3 {
+  margin: 0 0 var(--s2);
+  color: var(--ink);
+  font-size: var(--size-entry);
+  font-weight: 620;
+  line-height: 1.35;
+}
+
+p { margin: 0 0 var(--s4); max-width: var(--measure); }
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent-deep), var(--accent-deep));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  transition: color var(--fast) var(--ease), background-size var(--slow) var(--ease);
+}
+
+a:hover {
+  color: var(--accent-hi);
+  background-size: 100% 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--r-sm);
+}
+
+/* ----------------------------------------------- timeline: rail + markers */
+
+main ol {
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 var(--s5);
+  list-style: none;
+}
+
+main ol::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 0.8rem;
+  bottom: 0.8rem;
+  width: 2px;
+  background: linear-gradient(180deg,
+              var(--accent-deep) 0%,
+              var(--rule-strong) 18%,
+              var(--rule-strong) 82%,
+              transparent 100%);
+}
+
+main ol > li {
+  position: relative;
+  padding: 0 0 var(--s4);
+}
+
+main ol > li:last-child { padding-bottom: 0; }
+
+main ol > li::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--s5) + 1px);
+  top: 0.62rem;
+  width: 10px;
+  height: 10px;
+  background: var(--bg);
+  border: 2px solid var(--accent-deep);
+  border-radius: var(--r-full);
+  transition: background var(--fast) var(--ease),
+              border-color var(--fast) var(--ease),
+              box-shadow var(--slow) var(--ease);
+}
+
+/* the entry you are reading lights its own marker */
+main ol > li:hover::before,
+main ol > li:focus-within::before {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-wash);
+}
+
+article time {
+  font-family: var(--font-mono);
+  font-size: var(--size-meta);
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+article p { margin: 0 0 var(--s2); color: var(--body); }
+
+article cite { font-style: normal; color: var(--ink); }
+
+/* source line: a quiet panel that wakes on hover */
+article p:last-child {
+  margin: var(--s3) 0 0;
+  padding: var(--s2) var(--s3);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--rule-strong);
+  border-radius: var(--r-md);
+  color: var(--muted);
+  font-size: var(--size-meta);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease);
+}
+
+main ol > li:hover article p:last-child {
+  background: var(--surface-hi);
+  border-left-color: var(--accent);
+}
+
+article p:last-child a {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  background-image: linear-gradient(var(--rule-strong), var(--rule-strong));
+}
+
+article p:last-child a:hover { color: var(--accent-hi); }
+
+/* ------------------------------ unordered lists: references, weekly work -- */
+
+main section > ul { margin: 0; padding: 0; list-style: none; }
+
+main section > ul > li {
+  padding: var(--s2) 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: var(--size-small);
+  overflow-wrap: anywhere;
+}
+
+main section > ul > li:first-child { padding-top: 0; }
+
+main section > ul > li cite { font-style: normal; color: var(--ink); }
+
+main section > ul > li a { font-family: var(--font-mono); font-size: 0.78rem; }
+
+/* ---------------------------------------- home page: the weekly work rows --
+   A row that is nothing but a link is a destination, so it behaves like one:
+   no underline, a card that slides and lights up under the cursor.         */
+
+main section > ul > li:has(> a:only-child) {
+  padding: 0;
+  border-bottom: 0;
+  margin-bottom: var(--s2);
+}
+
+main section > ul > li > a:only-child {
+  display: block;
+  padding: var(--s3) var(--s4);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--rule-strong);
+  border-radius: var(--r-md);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--size-body);
+  background-image: none;          /* kill the shared underline gradient */
+  text-decoration: none;
+  transition: transform var(--fast) var(--ease),
+              background var(--fast) var(--ease),
+              border-color var(--fast) var(--ease),
+              box-shadow var(--slow) var(--ease);
+}
+
+main section > ul > li > a:only-child:hover {
+  transform: translateX(4px);
+  background: var(--surface-hi);
+  border-color: var(--rule-strong);
+  border-left-color: var(--accent);
+  box-shadow: var(--lift);
+  color: var(--ink);
+}
+
+main section > ul > li > a:only-child:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------- footer -- */
+
+body > footer {
+  max-width: calc(var(--rail) + var(--gutter) + var(--measure));
+  margin: var(--s7) auto 0;
+  padding-top: var(--s4);
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: var(--size-meta);
+}
+
+footer p { margin: 0 0 var(--s2); max-width: 70ch; }
+footer p:last-child { margin: 0; }
+
+
+/* ------------------------------------------------------------ scrollbar --
+   Firefox takes the two-value shorthand; WebKit and Blink need the
+   pseudo-elements. Both land on the same slate track and azure thumb.      */
+
+html {
+  scrollbar-color: var(--rule-strong) var(--bg-deep);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--rule-strong);
+  border: 3px solid var(--bg-deep);   /* inset, so the thumb reads as a pill */
+  border-radius: var(--r-full);
+  transition: background var(--fast) var(--ease);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-deep);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--bg-deep);
+}
+
+/* text selection picks up the accent too */
+::selection {
+  background: var(--accent-wash);
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------- mobile -- */
+
+@media (min-width: 90rem) {
+  :root { --measure: 86ch; --gutter: 6rem; }
+}
+
+@media (max-width: 34rem) {
+  :root { --pad: 1.125rem; --s6: 2.25rem; --s7: 3rem; }
+  body { font-size: 0.9375rem; background-attachment: scroll; }
+  main ol { padding-left: 1.6rem; }
+  main ol::before { left: 4px; }
+  main ol > li::before { left: -1.6rem; width: 9px; height: 9px; }
+  main section > ul > li > a:only-child:hover { transform: none; }
+}
