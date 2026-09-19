@@ -636,7 +636,12 @@ footer p { margin: 0 0 var(--s2); max-width: var(--prose); font-size: inherit; }
 footer p:last-child { margin: 0; }
 
 /* ------------------------------------------------- scroll-driven timeline --
-   Enhancement only: unsupported browsers keep the static styling above.   */
+   Enhancement only: unsupported browsers keep the static styling above.
+
+   Every range runs from an earlier point to a later one no matter how tall
+   the element is. That matters on a phone, where the list and each entry are
+   taller than the viewport: ranges mixing "entry" with "cover", or ending at
+   "exit 0%", invert on tall elements and the animation freezes.           */
 
 @supports (animation-timeline: view()) {
 
@@ -654,7 +659,7 @@ footer p:last-child { margin: 0; }
     transform: scaleY(0);
     animation: rail-fill linear both;
     animation-timeline: view();
-    animation-range: entry 100% exit 0%;
+    animation-range: entry 0% exit 100%;
   }
 
   @media (min-width: 40rem) { main ol::after { left: 5px; } }
