@@ -7,11 +7,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
     <header>
-    <h1>Web Programming Portfolio — Perla Samaha</h1>
-    <p>A live site that grows one page or feature every week.</p>
-</header> 
-    <main> 
+        <h1>{% block heading %}Web Programming Portfolio — Perla Samaha{% endblock %}</h1>
+        <p>{% block subtitle %}A live site that grows one page or feature every week.{% endblock %}</p>
+    </header>
+
+    <nav aria-label="Main menu">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('internet_history') }}">Internet history</a></li>
+            <li><a href="{{ url_for('web_history') }}">Web history</a></li>
+            <li><a href="{{ url_for('internet_history_ai') }}">Internet history (AI)</a></li>
+            <li><a href="{{ url_for('web_history_ai') }}">Web history (AI)</a></li>
+        </ul>
+    </nav>
+
+    <main>
         {% block content %}{% endblock %}
     </main>
 
@@ -19,5 +31,6 @@
         <p>Web Programming — built with Flask and deployed on Render.</p>
         <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
     </footer>
+
 </body>
 </html>
