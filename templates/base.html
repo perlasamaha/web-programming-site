@@ -13,16 +13,6 @@
         <p>{% block subtitle %}A live site that grows one page or feature every week.{% endblock %}</p>
     </header>
 
-    <nav aria-label="Main menu">
-        <ul>
-            <li><a href="{{ url_for('home') }}">Home</a></li>
-            <li><a href="{{ url_for('internet_history') }}">Internet history</a></li>
-            <li><a href="{{ url_for('web_history') }}">Web history</a></li>
-            <li><a href="{{ url_for('internet_history_ai') }}">Internet history (AI)</a></li>
-            <li><a href="{{ url_for('web_history_ai') }}">Web history (AI)</a></li>
-        </ul>
-    </nav>
-
     <main>
         {% block content %}{% endblock %}
     </main>
