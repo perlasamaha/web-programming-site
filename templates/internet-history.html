@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Internet: Key Milestones</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-  <header>
-    <h1>The Internet: Key Milestones</h1>
-    <p>A verified timeline, 1969 to 2007, with full sources.</p>
-  </header>
+{% block title %} Internet History {% endblock %}
 
+{% block content %}
+  
   <nav>
     <ul>
       <li><a href="/">Portfolio home</a></li>
@@ -20,9 +12,7 @@
     </ul>
   </nav>
 
-  <main>
-
-    <section id="introduction">
+  <section id="introduction">
       <h2>Introduction</h2>
       <p>The Internet is a global system of interconnected computer networks that exchange data using shared protocols. It has no single inventor: it grew out of work by many researchers, among them Paul Baran, Donald Davies, Leonard Kleinrock, Vint Cerf, Bob Kahn and Jon Postel.</p>
       <p>Its origins lie in ARPANET (1969), but the Internet in its modern sense dates from the adoption of TCP/IP in 1983. Each milestone below gives the year, the event and why it mattered; every date was verified against the source cited beneath it.</p>
@@ -108,16 +98,20 @@
             <p>Source: Maryville University — The Evolution of Social Media: <a href="https://online.maryville.edu/blog/evolution-social-media/">https://online.maryville.edu/blog/evolution-social-media/</a></p>
           </article>
         </li>
+        <li>
+          <article>
+            <h3>2022 — Generative AI reaches the public</h3>
+            <p>OpenAI released ChatGPT on 30 November 2022; it passed a million users in five days and about 800 million weekly users by November 2025. Why it mattered: conversational AI became a second front door to the Internet alongside search, changing how people find information and how sites are written for machines as well as readers.</p>
+            <p>Source: Britannica — ChatGPT: <a href="https://www.britannica.com/technology/ChatGPT">https://www.britannica.com/technology/ChatGPT</a></p>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>2025 — Six billion people online</h3>
+            <p>The ITU reported on 17 November 2025 that about 6 billion people, roughly 74% of the world, use the Internet, while 2.2 billion remain offline and 5G covers 55% of the population. Why it mattered: growth is slowing and the remaining gap is now about affordability and skills rather than coverage, with 96% of the offline population in low- and middle-income countries.</p>
+            <p>Source: ITU — Measuring digital development: Facts and Figures 2025: <a href="https://www.itu.int/itu-d/reports/statistics/facts-figures-2025/">https://www.itu.int/itu-d/reports/statistics/facts-figures-2025/</a></p>
+          </article>
+        </li>
       </ol>
     </section>
-
-  </main>
-
-  <footer>
-    <p>Web Programming — built with Flask and deployed on Render.</p>
-        <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, 
-            USEK. (Fall 2026-2027)</p>
-  </footer>
-
-</body>
-</html>
+{% endblock content %}

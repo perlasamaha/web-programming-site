@@ -1,24 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The World Wide Web: Key Milestones</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-<header>
-  <p>Web Programming coursework</p>
-  <h1>The World Wide Web: Key Milestones</h1>
-  <p>A verified timeline, 1989&ndash;2018, with full sources</p>
-</header>
+{% block title %} Web History (AI) {% endblock %}
+
+{% block content %}
 
 <nav aria-label="Related pages">
   <a href="/">Portfolio home</a>
-  <a href="/internet-history-ai">The World Wide Internet: Key Milestones</a>
+  <a href="/internet-history-ai">The Internet: Key Milestones</a>
 </nav>
-
-<main>
 
   <section aria-labelledby="intro-heading">
     <h2 id="intro-heading">Introduction</h2>
@@ -130,16 +119,24 @@
         </article>
       </li>
 
+      <li>
+        <article aria-labelledby="m2022">
+          <h3 id="m2022">HTTP/3 becomes a standard &mdash; <time datetime="2022-06">2022</time></h3>
+          <p>The IETF published HTTP/3 as RFC 9114 in June 2022, moving the Web's transport from TCP to QUIC over UDP.</p>
+          <p>Why it mattered: it removed the head-of-line blocking that slowed HTTP/2 on lossy networks and let connections survive a switch between Wi-Fi and mobile data.</p>
+          <p>Source: <cite>IETF &mdash; RFC 9114: HTTP/3</cite>, <a href="https://www.rfc-editor.org/info/rfc9114" target="_blank" rel="noopener">rfc-editor.org</a></p>
+        </article>
+      </li>
+
+      <li>
+        <article aria-labelledby="m2023">
+          <h3 id="m2023">WCAG 2.2 &mdash; <time datetime="2023-10-05">2023</time></h3>
+          <p>Published on 5 October 2023, adding nine success criteria covering focus appearance, dragging alternatives, minimum target size, consistent help and accessible authentication.</p>
+          <p>Why it mattered: it addressed touch and cognitive barriers that WCAG 2.1 left open, and it is now the benchmark referenced in accessibility law and procurement.</p>
+          <p>Source: <cite>W3C &mdash; What's New in WCAG 2.2</cite>, <a href="https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/" target="_blank" rel="noopener">w3.org</a></p>
+        </article>
+      </li>
+
     </ol>
   </section>
-
-</main>
-
-<footer>
-  <p>Web Programming — built with Flask and deployed on Render.</p>
-        <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, 
-            USEK. (Fall 2026-2027)</p>
-</footer>
-
-</body>
-</html>
+{% endblock content %}
