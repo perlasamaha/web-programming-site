@@ -1,16 +1,5 @@
-/* ==========================================================================
-   Web Programming Portfolio — Perla Samaha
-   Mobile-first. Base rules target a 375px phone; @media (min-width: …)
-   layers on tablet, desktop and wide-desktop. Vanilla CSS, token-driven.
-   ========================================================================== */
-
-/* --------------------------------------------------------------- tokens --
-   Values here are the PHONE values. Breakpoints below override the few
-   that need to grow; every rule in the sheet reads from these.            */
-
 :root {
 
-  /* colour */
   --bg:           #1e2a38;
   --bg-deep:      #18222e;
   --surface:      #253341;
@@ -22,7 +11,7 @@
 
   --rule:         #33475a;
   --rule-strong:  #47607a;
-  --rail-track:   #35485c;   /* unfilled timeline rail */
+  --rail-track:   #35485c;   
 
   --accent:       #58a8ff;
   --accent-hi:    #8cc4ff;
@@ -35,13 +24,13 @@
   --glow:         0 0 0 1px rgba(88, 168, 255, 0.35);
   --lift:         0 6px 20px rgba(8, 14, 22, 0.35);
 
-  /* type — phone sizes */
+ 
   --font-sans: "Inter", "Segoe UI", system-ui, -apple-system,
                "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo,
                Consolas, monospace;
 
-  --size-root:    0.9375rem;               /* 15px */
+  --size-root:    0.9375rem;              
   --size-logo:    0.6875rem;
   --size-title:   clamp(1.4rem, 7vw, 1.9rem);
   --size-lede:    0.9375rem;
@@ -55,7 +44,6 @@
   --leading-tight: 1.3;
   --leading-body:  1.6;
 
-  /* spacing — phone */
   --s1: 0.25rem;
   --s2: 0.5rem;
   --s3: 0.75rem;
@@ -64,29 +52,23 @@
   --s6: 2rem;
   --s7: 2.75rem;
 
-  /* layout — phone: full width, small gutter */
   --measure:  100%;
   --pad:      1rem;
   --gutter:   0rem;
-  --prose:    100%;                        /* cap on running text          */
-  --card-min: 15rem;                       /* smallest gallery card        */
-  --rail-x:   1.6rem;                      /* timeline indent              */
+  --prose:    100%;                        
+  --card-min: 15rem;                     
+  --rail-x:   1.6rem;                     
 
-  /* radii */
   --r-sm:   4px;
   --r-md:   8px;
   --r-lg:   12px;
   --r-full: 999px;
 
-  /* motion */
   --ease:  cubic-bezier(0.2, 0.7, 0.3, 1);
   --fast:  140ms;
   --slow:  220ms;
 }
 
-/* ------------------------------------------------------------ breakpoints */
-
-/* tablet */
 @media (min-width: 40rem) {
   :root {
     --size-root:    1rem;
@@ -106,7 +88,6 @@
   }
 }
 
-/* desktop */
 @media (min-width: 60rem) {
   :root {
     --size-title:   clamp(2rem, 4vw, 2.5rem);
@@ -122,7 +103,6 @@
   }
 }
 
-/* wide desktop */
 @media (min-width: 80rem) {
   :root {
     --measure: 92rem;
@@ -130,8 +110,6 @@
     --prose:   78ch;
   }
 }
-
-/* --------------------------------------------------------------- resets -- */
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -173,7 +151,6 @@ body {
 
 img, svg, video { max-width: 100%; height: auto; }
 
-/* one centred column, shared by every landmark */
 body > header,
 body > nav,
 body > main,
@@ -183,29 +160,11 @@ body > footer {
   margin-inline: auto;
 }
 
-/* --------------------------------------------------------- optional hooks --
-   Nothing below matches the current HTML. Each rule activates only if you
-   add that class yourself; until then it styles nothing.
-
-     .container    wrap the contents of header / main / footer in
-                   <div class="container"> … </div> if you ever need an
-                   inner wrapper. The landmarks above already centre the
-                   column, so this is not required.
-
-     .logo         add <a class="logo" href="{{ url_for('home') }}">PS</a>
-                   as the first child of <header>.
-
-     .weekly-list  add class="weekly-list" to the <ul> in index.html. The
-                   gallery already works without it, via the structural
-                   selector further down.                                  */
-
 .container {
   width: 100%;
   max-width: var(--measure);
   margin-inline: auto;
 }
-
-/* --------------------------------------------------------------- header -- */
 
 body > header { padding: var(--s6) 0 var(--s4); }
 
@@ -246,10 +205,6 @@ header p {
   color: var(--muted);
   font-size: var(--size-lede);
 }
-
-/* ------------------------------------------------------------------ nav --
-   Phone: two pills per row, equal width, so the menu reads as a block
-   rather than a ragged line. Tablet and up: one spread-out row.           */
 
 nav {
   margin: 0 0 var(--s5);
@@ -318,8 +273,6 @@ nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   nav a:hover { background: var(--accent-wash); border-color: transparent; }
 }
 
-/* ------------------------------------------------------ sections + type -- */
-
 body > main { padding-top: var(--s4); }
 
 @media (min-width: 40rem) { body > main { padding-top: var(--s5); } }
@@ -373,8 +326,6 @@ a:focus-visible {
   outline-offset: 3px;
   border-radius: var(--r-sm);
 }
-
-/* ----------------------------------------------- timeline: rail + markers */
 
 main ol {
   position: relative;
@@ -448,7 +399,6 @@ article p { margin: 0 0 var(--s2); max-width: var(--prose); color: var(--body); 
 
 article cite { font-style: normal; color: var(--ink); }
 
-/* the source line beneath each entry */
 article p:last-child {
   display: block;
   width: 100%;
@@ -481,9 +431,6 @@ article p:last-child a {
 }
 
 article p:last-child a:hover { color: var(--accent-hi); }
-
-/* ------------------------------ unordered lists: references, weekly work --
-   One full-width row per source: name across the row, URL below as a pill. */
 
 main section > ul {
   display: flex;
@@ -528,7 +475,6 @@ main section > ul > li:hover {
   border-left-color: var(--accent);
 }
 
-/* the AI pages leave a stray comma between <cite> and the link */
 main section > ul > li:has(cite) { font-size: 0; }
 
 main section > ul > li cite {
@@ -559,9 +505,6 @@ main section > ul > li > a {
 main section > ul > li > a:hover { color: var(--accent-hi); border-color: var(--accent-deep); }
 
 main section > ul > li > a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-/* ------------------------------------------- home page: .weekly-list grid --
-   One column on a phone; more columns appear as the viewport allows.      */
 
 main > section:only-child > ul,
 .weekly-list {
@@ -613,7 +556,6 @@ main > section:only-child > ul > li > a:hover,
   color: var(--ink);
 }
 
-/* the lift is a pointer affordance, so only where there is a pointer */
 @media (hover: hover) and (min-width: 40rem) {
   main > section:only-child > ul > li > a:hover,
   .weekly-list a:hover { transform: translateY(-2px); box-shadow: var(--lift); }
@@ -621,8 +563,6 @@ main > section:only-child > ul > li > a:hover,
 
 main > section:only-child > ul > li > a:focus-visible,
 .weekly-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-/* --------------------------------------------------------------- footer -- */
 
 body > footer {
   margin-top: var(--s7);
@@ -634,14 +574,6 @@ body > footer {
 
 footer p { margin: 0 0 var(--s2); max-width: var(--prose); font-size: inherit; }
 footer p:last-child { margin: 0; }
-
-/* ------------------------------------------------- scroll-driven timeline --
-   Enhancement only: unsupported browsers keep the static styling above.
-
-   Every range runs from an earlier point to a later one no matter how tall
-   the element is. That matters on a phone, where the list and each entry are
-   taller than the viewport: ranges mixing "entry" with "cover", or ending at
-   "exit 0%", invert on tall elements and the animation freezes.           */
 
 @supports (animation-timeline: view()) {
 
@@ -703,13 +635,6 @@ footer p:last-child { margin: 0; }
   }
 }
 
-
-/* --------------------------------------------- timeline without scroll JS --
-   Safari before 26 and older Chrome have no scroll-driven animations, so the
-   @supports block above never runs. The rail is left evenly grey rather than
-   hinting at a progress that never moves; the markers are filled instead, so
-   the timeline still reads as finished.                                    */
-
 @supports not (animation-timeline: view()) {
 
   /* no fill to suggest, so the rail stays evenly grey; only the markers
@@ -720,7 +645,6 @@ footer p:last-child { margin: 0; }
     box-shadow: 0 0 0 4px var(--accent-wash);
   }
 
-  /* the marker under the cursor still lifts above the rest */
   main ol > li:hover::before,
   main ol > li:focus-within::before {
     background: var(--accent-hi);
@@ -728,8 +652,6 @@ footer p:last-child { margin: 0; }
     box-shadow: 0 0 0 6px var(--accent-wash);
   }
 }
-
-/* ------------------------------------------------------------ scrollbar -- */
 
 html {
   scrollbar-color: var(--rule-strong) var(--bg-deep);
