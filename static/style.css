@@ -147,8 +147,6 @@ body {
   }
 }
 
-img, svg, video { max-width: 100%; height: auto; }
-
 body > header,
 body > nav,
 body > main,
@@ -184,8 +182,6 @@ body > header { padding: var(--space-xxlarge) 0 var(--space-large); }
 }
 
 .logo:hover { background: var(--highlight-color); color: var(--page-background-darker); }
-
-img.logo { padding: 0; background: none; border: 0; height: 2rem; width: auto; }
 
 header h1 {
   max-width: 24ch;
