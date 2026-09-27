@@ -30,7 +30,7 @@ Reads the exact field `name` values from the profile form; `skills` and
   <header class="profile-header">
     <h1>{{ data.get('fullname') }}</h1>
     {% if data.get('major') %}
-    <p class="profile-title">{{ data.get('major') | title }} Engineering</p>
+    <p class="profile-title">{{ data.get('major') | title }}</p>
     {% endif %}
     <p class="profile-contact">
       {% if data.get('student_id') %}<span>🎓 {{ data.get('student_id') }}</span
@@ -56,7 +56,7 @@ Reads the exact field `name` values from the profile form; `skills` and
     <dl>
       {% if data.get('major') %}
       <dt>Major</dt>
-      <dd>{{ data.get('major') | title }} Engineering</dd>
+      <dd>{{ data.get('major') | title }}</dd>
       {% endif %} {% if data.get('gpa') %}
       <dt>GPA</dt>
       <dd>{{ data.get('gpa') }} / 100</dd>
