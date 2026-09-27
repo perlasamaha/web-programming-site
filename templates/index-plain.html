@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before CSS — Web Programming Portfolio</title>
+    <!-- No stylesheet on purpose: this page shows the site as it looked in
+         Week 2, before the Week 3 design system was written. It does not
+         extend base.html, because base.html links style.css. -->
+</head>
+<body>
+
+    <header>
+        <h1>Web Programming Portfolio — Perla Samaha</h1>
+        <p>A live site that grows one page or feature every week.</p>
+    </header>
+
+    <nav aria-label="Main menu">
+        <ul>
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('internet_history') }}">Internet history</a></li>
+            <li><a href="{{ url_for('web_history') }}">Web history</a></li>
+            <li><a href="{{ url_for('internet_history_ai') }}">Internet history (AI)</a></li>
+            <li><a href="{{ url_for('web_history_ai') }}">Web history (AI)</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Weekly Work</h2>
+            <ul>
+                {% for item in weekly_work %}
+                    <li><a href="{{ item.url }}">Week {{ item.week }} — {{ item.title }}</a></li>
+                {% else %}
+                    <li>Week 1 — live site launched.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>About this page</h2>
+            <p>This is the portfolio with no stylesheet attached: the browser's
+               default rendering of the same HTML. Every visual difference between
+               this page and the rest of the site comes from
+               <code>static/style.css</code>, written in Week 3.</p>
+            <p><a href="{{ url_for('home') }}">Back to the styled home page</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Web Programming — built with Flask and deployed on Render.</p>
+        <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
+    </footer>
+
+</body>
+</html>

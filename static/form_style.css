@@ -1,0 +1,157 @@
+:root {
+  --field-radius:   3px;
+  --space-1:        0.25rem;
+  --valid-colour:   #4f8a2f;
+  --invalid-colour: #b3401f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --valid-colour: #8fce5e; --invalid-colour: #e08b6b; }
+}
+
+form { max-width: 46rem; }
+
+fieldset {
+  display: block;
+  margin: 0 0 var(--space-4);
+  padding: var(--space-4);
+  background: var(--card-background);
+  border: 2px solid var(--rule-strong-colour);
+  border-radius: var(--field-radius);
+}
+
+legend {
+  padding: 0 var(--space-2);
+  color: var(--accent-ink-colour);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+form fieldset fieldset {
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+form fieldset fieldset > legend {
+  padding: 0;
+  margin-bottom: var(--space-1);
+  color: var(--heading-text-colour);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  font-weight: 600;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+label {
+  display: block;
+  margin-bottom: var(--space-1);
+  color: var(--heading-text-colour);
+  font-size: var(--text-small);
+  font-weight: 500;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0.55rem 0.7rem;
+  background: var(--page-background);
+  border: 1px solid var(--rule-strong-colour);
+  border-radius: var(--field-radius);
+  color: var(--heading-text-colour);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  line-height: 1.4;
+  vertical-align: top;
+  transition: border-color var(--speed) var(--ease), box-shadow var(--speed) var(--ease);
+}
+
+textarea { min-height: 7rem; margin-bottom: var(--space-3); resize: vertical; }
+
+select[multiple] { min-height: 9rem; }
+
+optgroup { font-family: var(--font-text); font-weight: 600; color: var(--heading-text-colour); }
+
+input[type="color"]  { width: 4rem; height: 2.5rem; padding: 2px; }
+input[type="hidden"] { display: none; }
+
+form label:has(input[type="checkbox"]),
+form label:has(input[type="radio"]) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: auto;
+  font-weight: 400;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline-block;
+  width: auto;
+  padding: 0;
+  accent-color: var(--accent-colour);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-colour);
+  box-shadow: 0 0 0 3px var(--accent-wash);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible { outline: 2px solid var(--accent-colour); outline-offset: 1px; }
+
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid { border-color: var(--invalid-colour); }
+
+input:user-valid,
+select:user-valid,
+textarea:user-valid { border-color: var(--valid-colour); }
+
+label:has(+ input[required])::after,
+label:has(+ select[required])::after,
+label:has(+ textarea[required])::after { content: " *"; color: var(--invalid-colour); }
+
+::placeholder { color: var(--small-text-colour); opacity: 1; }
+
+button {
+  display: inline-block;
+  width: auto;
+  margin: var(--space-2) var(--space-2) 0 0;
+  padding: 0.6rem 1.4rem;
+  border: 1px solid transparent;
+  border-radius: var(--field-radius);
+  font-family: var(--font-text);
+  font-size: var(--text-small);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--speed) var(--ease), color var(--speed) var(--ease),
+              border-color var(--speed) var(--ease);
+}
+
+button[type="submit"] { background: var(--band-background); color: var(--band-text-colour); }
+button[type="submit"]:hover { background: var(--accent-colour); color: var(--band-background); }
+
+button[type="reset"] {
+  background: none;
+  border-color: var(--rule-strong-colour);
+  color: var(--paragraph-text-colour);
+}
+
+button[type="reset"]:hover { border-color: var(--accent-colour); color: var(--accent-ink-colour); }
+
+form small { display: block; margin-top: var(--space-1); color: var(--small-text-colour); font-size: var(--text-tiny); }
+
+datalist { display: none; }
