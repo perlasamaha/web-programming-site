@@ -1,12 +1,6 @@
 :root {
   --quiz-radius:    4px;
   --space-1:        0.25rem;
-  --correct-colour: #4f8a2f;
-  --wrong-colour:   #b3401f;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root { --correct-colour: #8fce5e; --wrong-colour: #e08b6b; }
 }
 
 main .container {
@@ -52,6 +46,8 @@ main h1 {
   letter-spacing: -0.02em;
 }
 
+#choices { margin: 0 0 var(--space-4); }
+
 .choice {
   display: flex;
   align-items: center;
@@ -77,8 +73,7 @@ main h1 {
   color: var(--heading-text-colour);
 }
 
-.choice input[type="radio"],
-.choice input[type="checkbox"] {
+.choice input[type="radio"] {
   margin: 0;
   accent-color: var(--accent-colour);
 }
@@ -92,13 +87,14 @@ main h1 {
 
 .choice:focus-within { outline: 2px solid var(--accent-colour); outline-offset: 2px; }
 
-.navigation,
-.submit {
+.navigation {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-top: var(--space-5);
 }
+
+button.submit { margin-top: var(--space-4); }
 
 main button {
   padding: 0.6rem 1.3rem;
@@ -120,34 +116,59 @@ main button:focus-visible { outline: 2px solid var(--accent-colour); outline-off
 
 main button:disabled { opacity: 0.45; cursor: not-allowed; }
 
-.submit button,
-main button[type="submit"] {
+button.submit {
   background: var(--band-background);
   border-color: var(--band-background);
   color: var(--band-text-colour);
 }
 
-.submit button:hover,
-main button[type="submit"]:hover {
+button.submit:hover {
   background: var(--accent-colour);
   border-color: var(--accent-colour);
   color: var(--band-background);
 }
 
 #resultsPanel {
+  display: none;                 
   margin-top: var(--space-5);
   padding-top: var(--space-4);
   border-top: 2px solid var(--accent-colour);
 }
 
-#score {
+#scoreText {
   display: block;
-  margin-bottom: var(--space-3);
+  margin: 0 0 var(--space-1);
   color: var(--heading-text-colour);
   font-family: var(--font-display);
-  font-size: calc(var(--text-entry) * 1.4);
+  font-size: calc(var(--text-entry) * 1.6);
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
+}
+
+#percentageText {
+  margin: 0 0 var(--space-2);
+  color: var(--accent-ink-colour);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+#performanceText {
+  margin: 0 0 var(--space-4);
+  color: var(--paragraph-text-colour);
+  font-size: var(--text-small);
+}
+
+#resultsPanel h3 {
+  margin: var(--space-4) 0 var(--space-2);
+  color: var(--heading-text-colour);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 #correction {
@@ -163,8 +184,33 @@ main button[type="submit"]:hover {
   white-space: pre-wrap;
 }
 
-.correct { color: var(--correct-colour); font-weight: 600; }
-.wrong   { color: var(--wrong-colour);   font-weight: 600; }
+main section {
+  display: block;
+  margin: 0;
+}
+
+main section > h2,
+main section > *:not(h2) {
+  grid-column: auto;
+}
+
+main section > h2 {
+  position: static;
+  max-width: none;
+  margin: 0 0 var(--space-4);
+  color: var(--heading-text-colour);
+  font-family: var(--font-display);
+  font-size: calc(var(--text-entry) * 1.1);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-transform: none;
+}
+
+main section > h2::before {
+  display: none;
+  content: none;
+}
 
 @media (max-width: 30rem) {
   main .container { padding: var(--space-4) var(--space-3); }
