@@ -187,6 +187,8 @@ header p {
   font-size: var(--text-small);
 }
 
+/* ---------- Main menu ---------- */
+
 nav { padding: var(--space-4) 0; border-bottom: 1px solid var(--rule-colour); }
 
 nav ul {
@@ -194,7 +196,7 @@ nav ul {
   flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
-  gap: var(--space-2) var(--space-4);
+  gap: var(--space-2) var(--space-3);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -208,18 +210,27 @@ nav a {
   color: var(--small-text-colour);
   font-family: var(--font-mono);
   font-size: var(--text-label);
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
   transition: background var(--speed) var(--ease), color var(--speed) var(--ease);
 }
+
+nav a:visited { color: var(--small-text-colour); }
 
 nav a:hover,
 nav a:active { background: var(--accent-colour); color: var(--teal); }
 
 nav a:focus-visible { outline: 2px solid var(--accent-colour); outline-offset: 3px; }
 
-@media (min-width: 40rem) { nav ul { justify-content: space-between; } }
+/* Wide screens: all links on one row, spread edge to edge */
+@media (min-width: 68rem) {
+  nav ul { flex-wrap: nowrap; justify-content: space-between; gap: var(--space-2); }
+  nav a  { padding: 3px 4px; letter-spacing: 0.06em; }
+}
+
+/* ---------- Content ---------- */
 
 body > main { padding-top: var(--space-5); padding-bottom: var(--space-6); counter-reset: section; }
 
@@ -409,14 +420,14 @@ main > section:only-child > ul > li,
     grid-template-columns: repeat(6, minmax(0, 1fr));
     grid-auto-rows: 10rem;
   }
- 
+
   main > section:only-child > ul > li:nth-child(1),
   .weekly-list > li:nth-child(1) { grid-column: span 4; grid-row: span 2; }
   main > section:only-child > ul > li:nth-child(2),
   .weekly-list > li:nth-child(2) { grid-column: span 2; }
   main > section:only-child > ul > li:nth-child(3),
   .weekly-list > li:nth-child(3) { grid-column: span 2; }
- 
+
   main > section:only-child > ul > li:nth-child(4),
   .weekly-list > li:nth-child(4) { grid-column: span 3; }
   main > section:only-child > ul > li:nth-child(5),
