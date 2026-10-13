@@ -78,5 +78,5 @@ editBtn.addEventListener("click", function () {
 
 
 confirmBtn.addEventListener("click", function () {
-  form.submit();
+  HTMLFormElement.prototype.submit.call(form);
 });
