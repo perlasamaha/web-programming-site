@@ -169,4 +169,8 @@ main button[type="submit"]:hover {
 @media (max-width: 30rem) {
   main .container { padding: var(--space-4) var(--space-3); }
   .navigation button, .submit button { flex: 1 1 auto; }
+
+   .panel { display: none; }
+   .panel.open { display: block; }
+   .hidden { display: none; }
 }

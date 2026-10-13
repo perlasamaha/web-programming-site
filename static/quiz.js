@@ -261,7 +261,7 @@ function renderQuestion() {
   const choicesContainer =
     document.getElementById("choices");
 
-  choicesContainer.innerHTML = "";
+  choicesContainer.innerHTML = ""; // clears any old choices from previous questions so new choices can be rendered
 
   for (let i = 0; i < q.choices.length; i++) {
     const label = document.createElement("label");
