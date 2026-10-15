@@ -288,13 +288,13 @@ function renderQuestion() {
       saveAnswer(i);
     };
 
-    label.appendChild(radio);
+    label.appendChild(radio); // creates <input type="radio"> inside a label element
 
     label.appendChild(
-      document.createTextNode(" " + q.choices[i])
+      document.createTextNode(" " + q.choices[i])  //creates a text node containing the actual answer choice text and appends it to the same label
     );
 
-    choicesContainer.appendChild(label);
+    choicesContainer.appendChild(label);  //Takes the fully assembled <label> and inserts it into the main container on the web page so it appears on the screen for the user
   }
 
   // --------------------------------------------------
