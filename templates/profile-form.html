@@ -12,11 +12,11 @@
 
 {% block content %}
 
-<section>
+<section class="profile-form-section">
   <h2>Engineering Student Profile</h2>
   <p>Complete this form to provide information about your academic background, technical skills, internship experience, and Final Year Project preferences.</p>
 
-  <form id= "profile-form" action="{{ url_for('submit_profile') }}" method="post">
+  <form id="profile-form" action="{{ url_for('submit_profile') }}" method="post">
 
     <fieldset>
       <legend>1. Personal Information</legend>
@@ -34,7 +34,7 @@
       <input type="tel" id="phone" name="phone" placeholder="+961 70 123456" pattern="\+?[0-9 ]{8,16}" title="Digits, spaces and an optional leading +" required><br>
 
       <label for="birthdate">Date of Birth:</label>
-      <input type="date" id="birthdate" name="birthdate" min="1990-01-01" max="2010-12-31" required><br>
+      <input type="date" id="birthdate" name="birthdate" min="1990-01-01" max="2010-12-31"><br>
 
       <label for="portfolio">GitHub:</label>
       <input type="url" id="portfolio" name="portfolio" placeholder="https://github.com/username" pattern="https://github\.com/[A-Za-z0-9](?:[A-Za-z0-9]|-(?=[A-Za-z0-9])){0,38}/?" title="A GitHub profile URL, for example https://github.com/username"><br>
@@ -129,7 +129,7 @@
       <input type="text" id="project_title" name="project_title" placeholder="Enter a tentative project title" maxlength="80" required><br>
 
       <label for="project_area">Preferred Project Area:</label>
-      <select id="project_area" name="project_area">
+      <select id="project_area" name="project_area" required>
         <optgroup label="Computer Engineering">
           <option value="Artificial Intelligence">Artificial Intelligence</option>
           <option value="Web Applications">Web Applications</option>
@@ -179,13 +179,5 @@
     </fieldset>
 
   </form>
-
-  <section id="review" class="panel">
-     <h2>Review your profile</h2>
-     <div id="review-list"></div>
-     <button type="button" id="edit-btn">Edit</button>
-     <button type="button" id="confirm-btn">Confirm &amp; Submit</button>
 </section>
-
-   <script src="{{ url_for('static', filename='profile.js') }}"></script>
 {% endblock %}

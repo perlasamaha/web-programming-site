@@ -53,6 +53,7 @@ WEEKLY_WORK = [
     {"week": 3, "title": "Site design system", "url": "/before-css"},
     {"week": 4, "title": "Engineering Student Profile", "url": "/submit-profile"},
     {"week": 5, "title": "JavaScript app", "url": "/quiz"},
+    {"week": 6, "title": "Engineering Student Profile (Week 6)", "url": "/submit-profile-week6"},
 ]
 
 
@@ -110,6 +111,17 @@ def submit_profile():
 @app.route("/quiz", methods=["GET", "POST"])
 def quiz():
     return render_template("quiz.html")
+
+
+
+@app.route("/submit-profile-week6", methods=["GET", "POST"])
+def submit_profile_week6():
+    if request.method == "POST":
+        data = request.form.to_dict()
+        skills = request.form.getlist("skills")
+        software = request.form.getlist("software")
+        return render_template("profile.html", data=data, skills=skills, software=software)
+    return render_template("profile-form-week6.html")
 
 
 if __name__ == "__main__":
