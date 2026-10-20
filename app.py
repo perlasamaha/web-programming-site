@@ -54,6 +54,7 @@ WEEKLY_WORK = [
     {"week": 4, "title": "Engineering Student Profile", "url": "/submit-profile"},
     {"week": 5, "title": "JavaScript app", "url": "/quiz"},
     {"week": 6, "title": "Engineering Student Profile (Week 6)", "url": "/submit-profile-week6"},
+    {"week": 7, "title": "Live Quiz with Fetch", "url": "/live-quiz"}, 
 ]
 
 
