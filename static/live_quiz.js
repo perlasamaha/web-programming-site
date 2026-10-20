@@ -162,12 +162,22 @@ async function buildCorrection() {
 // ======================================================
 
 async function submitQuiz() {
-  const score = await calculateScore();
-  const percentage = calculatePercentage(score);
-  const message = getPerformanceMessage(percentage);
-  const correction = await buildCorrection();
-
-  showResults(score, percentage, message, correction);
+  const loading = document.getElementById("loading");
+  const error = document.getElementById("error");
+  loading.hidden = false;
+  error.hidden = true;
+  try {
+    const score = await calculateScore();
+    const percentage = calculatePercentage(score);
+    const message = getPerformanceMessage(percentage);
+    const correction = await buildCorrection();
+    showResults(score, percentage, message, correction);
+    }
+    catch(err) {
+        loading.hidden = true;
+        error.hidden = false;
+        error.textContent = "Unable to load question: " + err.message;
+    }
 }
 
 async function renderQuestion() {
@@ -267,7 +277,9 @@ function showResults(
 // START APPLICATION
 // ======================================================
 async function init() { 
+    const loading = document.getElementById("loading");
     const error = document.getElementById("error");
+    loading.hidden = false;
     try {
     const response = await fetch(`/api/questions/count`);
      if (!response.ok) {
@@ -278,6 +290,7 @@ async function init() {
     await renderQuestion(); 
     }
     catch(err) {
+        loading.hidden = true;
         error.hidden = false;
         error.textContent = "Unable to load question: " + err.message;
     }
