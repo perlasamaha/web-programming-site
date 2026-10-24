@@ -114,3 +114,10 @@ main section.profile-form-section > h2 { position: static; }
   main section.profile-form-section { width: 100%; }
   #profile-form fieldset { padding: 1rem; }
 }
+
+#profile-form .error {
+  display: block;
+  margin-top: 0.3rem;
+  color: #b91c1c;
+  font-size: 0.9rem;
+}
