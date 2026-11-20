@@ -19,7 +19,7 @@
   <form id= "profile-form" action="{{ url_for('submit_profile_week6') }}" method="post">
 
     <fieldset>
-      <legend>1. Personal Information</legend>
+      <legend><h3>1. Personal Information</h3></legend>
 
       <label for="student_id">Student ID:</label>
       <input type="text" id="student_id" name="student_id" placeholder="202312345" pattern="[0-9]{9}" maxlength="9" title="Exactly 9 digits" required><br>
@@ -44,7 +44,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>2. Academic Information</legend>
+      <legend><h3>2. Academic Information</h3></legend>
 
       <label for="major">Engineering Major:</label>
       <select id="major" name="major" required>
@@ -68,7 +68,7 @@
         <label for="graduation_fall"><input type="radio" id="graduation_fall" name="graduation" value="Fall"> Fall</label>
       </fieldset>
 
-      <label for="graduation_month">Expected Graduation Month & Year:</label><br>
+      <label for="graduation_month">Expected Graduation Month & Year:</label>
       <input type="month" id="graduation_month" name="graduation_month" min="2026-01"><br>
 
       <fieldset>
@@ -79,7 +79,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>3. Technical Background</legend>
+      <legend><h3>3. Technical Background</h3></legend>
 
       <fieldset>
         <legend>Select all areas in which you have experience</legend>
@@ -123,7 +123,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>4. Final Year Project</legend>
+      <legend><h3>4. Final Year Project</h3></legend>
 
       <label for="project_title">Proposed Project Title:</label>
       <input type="text" id="project_title" name="project_title" placeholder="Enter a tentative project title" maxlength="120" required><br>
@@ -153,7 +153,7 @@
         </optgroup>
       </select><br>
 
-      <label for="description">Brief Project Description:</label><br>
+      <label for="description">Brief Project Description:</label>
       <textarea id="description" name="description" rows="5" cols="40" maxlength="1000" placeholder="Describe the problem, proposed solution, and expected outcome..."></textarea><br>
 
       <label for="team_size">Preferred Team Size:</label>

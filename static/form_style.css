@@ -70,6 +70,14 @@ main section.profile-form-section > h2 { position: static; }
   font-weight: 600;
 }
 
+#profile-form legend h3 {
+  margin: 0;
+  max-width: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
 #profile-form label {
   display: block;
   margin: var(--space-3) 0 var(--space-2);

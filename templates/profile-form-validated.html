@@ -26,7 +26,7 @@
   <form id="profile-form" method="post" action="{{ url_for('profile_validated') }}" novalidate>
 
     <fieldset>
-      <legend>1. Personal Information</legend>
+      <legend><h3>1. Personal Information</h3></legend>
 
       <label for="student_id">Student ID:</label>
       <input type="text" id="student_id" name="student_id" placeholder="202312345" pattern="[0-9]{9}" maxlength="9" title="Exactly 9 digits" value="{{ data.get('student_id', '') }}" required>
@@ -58,7 +58,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>2. Academic Information</legend>
+      <legend><h3>2. Academic Information</h3></legend>
 
       <label for="major">Engineering Major:</label>
       <select id="major" name="major" required>
@@ -86,7 +86,7 @@
         {{ err('graduation') }}
       </fieldset>
 
-      <label for="graduation_month">Expected Graduation Month & Year:</label><br>
+      <label for="graduation_month">Expected Graduation Month & Year:</label>
       <input type="month" id="graduation_month" name="graduation_month" min="2026-01" value="{{ data.get('graduation_month', '') }}">
       {{ err('graduation_month') }}
 
@@ -99,7 +99,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>3. Technical Background</legend>
+      <legend><h3>3. Technical Background</h3></legend>
 
       <fieldset>
         <legend>Select all areas in which you have experience</legend>
@@ -146,7 +146,7 @@
     </fieldset>
 
     <fieldset>
-      <legend>4. Final Year Project</legend>
+      <legend><h3>4. Final Year Project</h3></legend>
 
       <label for="project_title">Proposed Project Title:</label>
       <input type="text" id="project_title" name="project_title" placeholder="Enter a tentative project title" maxlength="120" value="{{ data.get('project_title', '') }}" required>
@@ -178,7 +178,7 @@
       </select>
       {{ err('project_area') }}
 
-      <label for="description">Brief Project Description:</label><br>
+      <label for="description">Brief Project Description:</label>
       <textarea id="description" name="description" rows="5" cols="40" maxlength="1000" placeholder="Describe the problem, proposed solution, and expected outcome...">{{ data.get('description', '') }}</textarea>
       {{ err('description') }}
 
