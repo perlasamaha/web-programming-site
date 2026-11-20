@@ -16,9 +16,9 @@ main button {
               border-color var(--speed) var(--ease);
 }
 
-main button:hover { border-color: var(--accent-colour); color: var(--accent-ink-colour); }
+main button:hover:not(:disabled) { border-color: var(--accent-colour); color: var(--accent-ink-colour); }
 
-main button:focus-visible { outline: 2px solid var(--accent-colour); outline-offset: 2px; }
+main button:focus-visible { outline: 2px solid var(--focus-colour); outline-offset: 2px; }
 
 main button:disabled { opacity: 0.45; cursor: not-allowed; }
 
@@ -28,7 +28,7 @@ main button[type="submit"] {
   color: var(--band-text-colour);
 }
 
-main button[type="submit"]:hover {
+main button[type="submit"]:hover:not(:disabled) {
   background: var(--accent-colour);
   border-color: var(--accent-colour);
   color: var(--band-background);
@@ -50,7 +50,7 @@ main section.profile-form-section > h2 { position: static; }
 
 .profile-form-section > p {
   max-width: 42rem;
-  margin: 0 0 1.5rem;
+  margin: 0 0 var(--space-4);
 }
 
 #profile-form { width: 100%; }
@@ -58,21 +58,24 @@ main section.profile-form-section > h2 { position: static; }
 #profile-form fieldset {
   display: block;
   min-width: 0;
-  margin: 0 0 1.25rem;
-  padding: 1.25rem;
+  margin: 0 0 var(--space-5);
+  padding: var(--space-4);
   border: 1px solid var(--rule-strong-colour);
   border-radius: 6px;
 }
 
 #profile-form legend {
-  padding: 0 0.45rem;
+  padding: 0 var(--space-2);
   color: var(--accent-ink-colour);
   font-weight: 600;
 }
 
 #profile-form label {
   display: block;
-  margin: 0.85rem 0 0.35rem;
+  margin: var(--space-3) 0 var(--space-2);
+  color: var(--heading-text-colour);
+  font-size: var(--text-small);
+  font-weight: 600;
 }
 
 #profile-form input:not([type="radio"]):not([type="checkbox"]):not([type="color"]),
@@ -83,13 +86,34 @@ main section.profile-form-section > h2 { position: static; }
   width: 100%;
   max-width: 38rem;
   min-height: 2.7rem;
-  padding: 0.6rem 0.75rem;
+  padding: var(--space-2) var(--space-3);
   border: 1px solid var(--rule-strong-colour);
   border-radius: 4px;
   font: inherit;
 }
 
 #profile-form textarea { min-height: 8rem; resize: vertical; }
+
+#profile-form input:hover:not(:disabled),
+#profile-form select:hover:not(:disabled),
+#profile-form textarea:hover:not(:disabled) {
+  border-color: var(--small-text-colour);
+}
+
+#profile-form input:focus-visible,
+#profile-form select:focus-visible,
+#profile-form textarea:focus-visible {
+  outline: 2px solid var(--focus-colour);
+  outline-offset: 2px;
+  border-color: var(--heading-text-colour);
+}
+
+#profile-form input:disabled,
+#profile-form select:disabled,
+#profile-form textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 #profile-form input[type="radio"],
 #profile-form input[type="checkbox"] { margin-right: 0.45rem; }
@@ -99,16 +123,19 @@ main section.profile-form-section > h2 { position: static; }
   display: inline-flex;
   align-items: center;
   margin: 0.35rem 1rem 0.35rem 0;
+  color: var(--paragraph-text-colour);
+  font-weight: 400;
 }
 
 #profile-form small {
   display: block;
-  margin-top: 0.4rem;
-  color: var(--small-text-colour);
+  margin-top: var(--space-2);
+  color: var(--faint-text-colour);
+  font-size: var(--text-tiny);
 }
 
 #profile-form input[type="color"] { width: 3.5rem; height: 2.7rem; }
-#profile-form button { margin: 0.5rem 0.5rem 0 0; }
+#profile-form button { margin: var(--space-2) var(--space-2) 0 0; }
 
 @media (max-width: 40rem) {
   main section.profile-form-section { width: 100%; }
@@ -117,7 +144,7 @@ main section.profile-form-section > h2 { position: static; }
 
 #profile-form .error {
   display: block;
-  margin-top: 0.3rem;
-  color: #b91c1c;
-  font-size: 0.9rem;
+  margin-top: var(--space-2);
+  color: var(--error-colour);
+  font-size: var(--text-small);
 }

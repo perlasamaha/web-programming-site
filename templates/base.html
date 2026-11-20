@@ -8,9 +8,9 @@
     {% block head %}{% endblock %}
 </head>
 <body>
-
-    <header class="container">
-        <a class="logo" href="{{ url_for('home') }}">PS</a>
+        <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+        <a class="logo" href="{{ url_for('home') }}" aria-label="Perla Samaha — Home">PS</a>
         <h1>{% block heading %}Web Programming Portfolio — Perla Samaha{% endblock %}</h1>
         <p>{% block subtitle %}A live site that grows one page or feature every week.{% endblock %}</p>
     </header>
@@ -28,11 +28,11 @@
         </ul>
     </nav>
 
-    <main class="container">
+    <main id="main-content" class="container">
         {% block content %}{% endblock %}
     </main>
 
-    <footer class="container">
+    <footer>
         <p>Web Programming — built with Flask and deployed on Render.</p>
         <p>This website is created for educational purposes only, as part of the GIN446 - Web Programming course, School of Engineering, USEK. (Fall 2026-2027)</p>
     </footer>

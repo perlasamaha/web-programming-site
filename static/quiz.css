@@ -13,11 +13,11 @@ main .container {
   border-radius: var(--quiz-radius);
 }
 
-main h1 {
-  margin: 0 0 var(--space-2);
+.quiz-title {
+  margin: 0 0 var(--space-3);
   color: var(--heading-text-colour);
   font-family: var(--font-display);
-  font-size: var(--text-entry);
+  font-size: calc(var(--text-entry) * 1.5);
   font-weight: 600;
   letter-spacing: -0.02em;
   text-align: left;
@@ -85,7 +85,7 @@ main h1 {
   font-weight: 500;
 }
 
-.choice:focus-within { outline: 2px solid var(--accent-colour); outline-offset: 2px; }
+.choice:focus-within { outline: 2px solid var(--focus-colour); outline-offset: 2px; }
 
 .navigation {
   display: flex;
@@ -97,7 +97,7 @@ main h1 {
 button.submit { margin-top: var(--space-4); }
 
 main button {
-  padding: 0.6rem 1.3rem;
+  padding: var(--space-2) var(--space-4);
   background: none;
   border: 1px solid var(--rule-strong-colour);
   border-radius: var(--quiz-radius);
@@ -110,9 +110,9 @@ main button {
               border-color var(--speed) var(--ease);
 }
 
-main button:hover { border-color: var(--accent-colour); color: var(--accent-ink-colour); }
+main button:hover:not(:disabled) { border-color: var(--accent-colour); color: var(--accent-ink-colour); }
 
-main button:focus-visible { outline: 2px solid var(--accent-colour); outline-offset: 2px; }
+main button:focus-visible { outline: 2px solid var(--focus-colour); outline-offset: 2px; }
 
 main button:disabled { opacity: 0.45; cursor: not-allowed; }
 
@@ -122,7 +122,7 @@ button.submit {
   color: var(--band-text-colour);
 }
 
-button.submit:hover {
+button.submit:hover:not(:disabled) {
   background: var(--accent-colour);
   border-color: var(--accent-colour);
   color: var(--band-background);

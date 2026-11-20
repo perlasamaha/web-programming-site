@@ -3,7 +3,7 @@
 {# Error macro: prints the message for field f, if there is one #}
 {% macro err(f) %}
   {% if errors and errors.get(f) %}
-    <span class="error">{{ errors[f] }}</span>
+    <span class="error" role="alert">{{ errors[f] }}</span>
   {% endif %}
 {% endmacro %}
 
@@ -131,7 +131,7 @@
       </datalist>
 
       <label for="software">Engineering Software Used:</label>
-      <select id="software" name="software" multiple size="6">
+      <select id="software" name="software" multiple size="6" aria-describedby="software-hint">
         <option value="MATLAB" {% if 'MATLAB' in sel_software %}selected{% endif %}>MATLAB</option>
         <option value="Simulink" {% if 'Simulink' in sel_software %}selected{% endif %}>Simulink</option>
         <option value="LabVIEW" {% if 'LabVIEW' in sel_software %}selected{% endif %}>LabVIEW</option>
@@ -142,7 +142,7 @@
         <option value="AutoCAD" {% if 'AutoCAD' in sel_software %}selected{% endif %}>AutoCAD</option>
       </select>
       {{ err('software') }}
-      <small>Hold Ctrl (Windows) or Command (Mac) to select several options.</small><br>
+      <small id="software-hint">Hold Ctrl (Windows) or Command (Mac) to select several options.</small><br>
     </fieldset>
 
     <fieldset>

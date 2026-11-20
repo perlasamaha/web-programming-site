@@ -109,7 +109,7 @@
       </datalist>
 
       <label for="software">Engineering Software Used:</label>
-      <select id="software" name="software" multiple size="6">
+      <select id="software" name="software" multiple size="6" aria-describedby="software-hint">
         <option value="MATLAB">MATLAB</option>
         <option value="Simulink">Simulink</option>
         <option value="LabVIEW">LabVIEW</option>
@@ -119,7 +119,7 @@
         <option value="Proteus">Proteus</option>
         <option value="AutoCAD">AutoCAD</option>
       </select><br>
-      <small>Hold Ctrl (Windows) or Command (Mac) to select several options.</small><br>
+      <small id="software-hint">Hold Ctrl (Windows) or Command (Mac) to select several options.</small><br>
     </fieldset>
 
     <fieldset>
@@ -129,7 +129,8 @@
       <input type="text" id="project_title" name="project_title" placeholder="Enter a tentative project title" maxlength="120" required><br>
 
       <label for="project_area">Preferred Project Area:</label>
-      <select id="project_area" name="project_area">
+      <select id="project_area" name="project_area" required>
+        <option value="">-- Select a project area --</option>
         <optgroup label="Computer Engineering">
           <option value="Artificial Intelligence">Artificial Intelligence</option>
           <option value="Web Applications">Web Applications</option>
@@ -181,7 +182,7 @@
   </form>
 
   <section id="review" class="panel">
-     <h2>Review your profile</h2>
+      <h2 tabindex="-1">Review your profile</h2>
      <div id="review-list"></div>
      <button type="button" id="edit-btn">Edit</button>
      <button type="button" id="confirm-btn">Confirm &amp; Submit</button>

@@ -68,15 +68,27 @@ form.addEventListener("submit", function (e) {
 
   buildReview();
   form.classList.add("hidden");
-  panel.classList.add("open");       
+  panel.classList.add("open");
+  panel.querySelector("h2").focus();       
 });
 
 editBtn.addEventListener("click", function () {
   panel.classList.remove("open");
   form.classList.remove("hidden");
+  document.getElementById("student_id").focus();
 });
 
 
 confirmBtn.addEventListener("click", function () {
+  confirmBtn.disabled = true;
+  editBtn.disabled = true;
+  confirmBtn.textContent = "Submitting...";
   HTMLFormElement.prototype.submit.call(form);
+});
+
+// If the user comes back with the browser's Back button, reset the buttons
+window.addEventListener("pageshow", function () {
+  confirmBtn.disabled = false;
+  editBtn.disabled = false;
+  confirmBtn.textContent = "Confirm & Submit";
 });

@@ -164,20 +164,23 @@ async function buildCorrection() {
 async function submitQuiz() {
   const loading = document.getElementById("loading");
   const error = document.getElementById("error");
+  const submitBtn = document.querySelector("button.submit");
   loading.hidden = false;
   error.hidden = true;
+  submitBtn.disabled = true;
   try {
     const score = await calculateScore();
     const percentage = calculatePercentage(score);
     const message = getPerformanceMessage(percentage);
     const correction = await buildCorrection();
     showResults(score, percentage, message, correction);
-    }
-    catch(err) {
-        loading.hidden = true;
-        error.hidden = false;
-        error.textContent = "Unable to load question: " + err.message;
-    }
+  } catch (err) {
+    error.hidden = false;
+    error.textContent = "Unable to calculate your results. Please try again. (" + err.message + ")";
+  } finally {
+    loading.hidden = true;
+    submitBtn.disabled = false;
+  }
 }
 
 async function renderQuestion() {
@@ -237,7 +240,7 @@ async function renderQuestion() {
     }
   catch(err) {
     error.hidden = false;
-    error.textContent = "Unable to load question: " + err.message;
+    error.textContent = "Unable to load this question. Please try again. (" + err.message + ")";
     }
   finally {
     loading.hidden = true;
@@ -284,15 +287,25 @@ async function init() {
     const response = await fetch(`/api/questions/count`);
      if (!response.ok) {
         throw new Error("HTTP " + response.status);
+        
   }
+
     const data = await response.json();
     total = data.count;
-    await renderQuestion(); 
+      if (total === 0) {
+      loading.hidden = true;
+      error.hidden = false;
+          error.textContent = "No questions are available right now.";
+      return;
+    }
+    await renderQuestion();
+    document.querySelector("button.submit").disabled = false;
+ 
     }
     catch(err) {
         loading.hidden = true;
         error.hidden = false;
-        error.textContent = "Unable to load question: " + err.message;
+        error.textContent = "Unable to load the quiz. Please refresh the page.";
     }
 }
 
