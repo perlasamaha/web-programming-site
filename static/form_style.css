@@ -78,6 +78,19 @@ main section.profile-form-section > h2 { position: static; }
   letter-spacing: inherit;
 }
 
+#profile-form fieldset fieldset {
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  border: 0;
+}
+
+#profile-form fieldset fieldset legend {
+  padding: 0;
+  margin-bottom: var(--space-2);
+  color: var(--heading-text-colour);
+  font-size: var(--text-small);
+}
+
 #profile-form label {
   display: block;
   margin: var(--space-3) 0 var(--space-2);
