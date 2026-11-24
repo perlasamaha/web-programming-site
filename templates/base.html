@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}My Web Programming Portfolio{% endblock %}</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23a8d117'/><text x='16' y='21' font-size='13' font-family='monospace' font-weight='bold' text-anchor='middle' fill='%230f3733'>PS</text></svg>">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="description" content="{% block description %}Web Programming portfolio by Perla Samaha: weekly pages, Internet and Web history timelines, a student profile form and a JavaScript quiz.{% endblock %}">
     {% block head %}{% endblock %}
 </head>
 <body>
